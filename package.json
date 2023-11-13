@@ -2,7 +2,7 @@
   "homepage" : "https://DmitryKodolbenko.github.io/shoplist",
   "name": "shoplist",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.17",
