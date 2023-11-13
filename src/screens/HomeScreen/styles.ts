@@ -16,10 +16,9 @@ export const HomeScreenContent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
   flex: 1;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: hidden;
 `;

@@ -17,6 +17,7 @@ const Gstyles: any = createGlobalStyle<{ connectButtonColor: string }>`
     ${createFontFamily()}
     font-weight: 400;
     font-style: normal;
+    margin: 0;
 }
 
 
