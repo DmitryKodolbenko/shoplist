@@ -55,7 +55,7 @@ console.log("render", lists)
 
   const currentList = useMemo(() => {
     const search: ISearch = queryString.parse(location.search);
-    return lists.find((item) => item.id === search.id);
+    return lists?.find((item) => item.id === search.id);
   }, [lists, setLists, location.search ]);
 
 
@@ -66,7 +66,7 @@ console.log("render", lists)
   const handleSubmit = () => {
     if (inputValue.trim() !== "") {
       setLists((prevList) =>
-      prevList.map((item) =>
+      prevList?.map((item) =>
       item.id === currentList?.id
         ? { ...item, list: [...item.list, { content: inputValue, checked: false }] }
         : item
@@ -80,7 +80,7 @@ console.log("render", lists)
     itemToRemove: string
   ) => {
     setLists((prevList) =>
-      prevList.map((item) =>
+      prevList?.map((item) =>
       item.id === currentList?.id
         ? { ...item, list: item.list.filter((item) => item.content !== itemToRemove) }
         : item
@@ -90,7 +90,7 @@ console.log("render", lists)
 
 
   function updateCheckedValue(newChecked: boolean, content: string) {
-    setLists((prevList) => prevList.map((item) =>
+    setLists((prevList) => prevList?.map((item) =>
       item.id === currentList?.id
         ? { ...item, list: item.list.map((listItem) =>
           listItem.content === content ? { ...listItem, checked: newChecked } : listItem
@@ -102,7 +102,7 @@ console.log("render", lists)
   return (
     <>
       <ListScreenContainer>
-        {currentList?.list.map((item, idx) => (
+        {currentList?.list?.map((item, idx) => (
           <ItemCheckbox
             key={idx}
             item={item}

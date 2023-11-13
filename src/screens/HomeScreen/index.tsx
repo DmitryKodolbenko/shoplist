@@ -10,11 +10,9 @@ function HomeScreen() {
   function renderRoutes() {
     return (
       <Routes>
-        <Route
-          path={`/`}
-          element={<ListsScreen/>}
-        />
-        <Route path={`${routes.list}/`} element={<ListScreen/>} />
+        <Route index element={<ListsScreen />} />
+        <Route path={`/`} element={<ListsScreen />} />
+        <Route path={`${routes.list}/`} element={<ListScreen />} />
       </Routes>
     );
   }

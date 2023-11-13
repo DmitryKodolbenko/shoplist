@@ -12,33 +12,27 @@ import ListItem from "../../components/ListItem";
 import { LISTS_KEY } from "../../constants/keys";
 function ListsScreen() {
   const { twaColors } = useColorTheme();
+  const savedLists = JSON.parse(String(localStorage.getItem(LISTS_KEY))) || [];
   const [lists, setLists] = useState<
   Array<{ list: Array<{ content: string; checked: boolean }>; id: string; listName: string }>
->(JSON.parse(String(localStorage.getItem(LISTS_KEY))));
+>(savedLists);
 
   useEffect(() => {
     localStorage.setItem(LISTS_KEY, JSON.stringify(lists));
   }, [lists]);
 
-  // useEffect(() => {
-  //   setLists(JSON.parse(String(localStorage.getItem(LISTS_KEY)))) 
-  // }, [location.pathname]);
-  // console.log(JSON.parse(String(localStorage.getItem(LISTS_KEY))))
-
-  // console.log(lists)
-
   const [updatedItem, setUpdatedItem] = useState(null);
 
   const handleInputChange = (id: string, newListName: string) => {
     setLists((prevList) =>
-      prevList.map((list) =>
+      prevList?.map((list) =>
         list.id === id ? { ...list, listName: newListName } : list
       )
     );
   };
 
   const handleDelete = (id: string) => {
-    setLists((prevList) => prevList.filter((item) => item.id !== id));
+    setLists((prevList) => prevList?.filter((item) => item.id !== id));
   };
 
   const defaultItem = {
@@ -54,14 +48,14 @@ function ListsScreen() {
   return (
     <>
       <ListsScreenContainer>
-        {lists.length === 0 ? (
+        {lists?.length === 0 ? (
           <EmptryList>
             <EmptryListText textColor={twaColors.emptrytext}>
             You don't have any lists created yet
             </EmptryListText>
           </EmptryList>
         ) : (
-          lists.map((item, idx) => (
+          lists?.map((item, idx) => (
             <ListItem
               key={item.id}
               item={item}
