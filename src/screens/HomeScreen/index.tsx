@@ -6,17 +6,17 @@ import Header from "../../components/Header";
 import ListsScreen from "../ListsScreen";
 import ListScreen from "../List";
 
-function HomeScreen() {
-  function renderRoutes() {
-    return (
-      <Routes>
-        <Route index element={<ListsScreen />} />
-        <Route path={`/`} element={<ListsScreen />} />
-        <Route path={`${routes.list}/`} element={<ListScreen />} />
-      </Routes>
-    );
-  }
+function renderRoutes() {
+  return (
+    <Routes>
+      <Route index element={<ListsScreen />} />
+      <Route path={`/`} element={<ListsScreen />} />
+      <Route path={`${routes.list}/`} element={<ListScreen />} />
+    </Routes>
+  );
+}
 
+function HomeScreen() {
   return (
     <>
       <Header />

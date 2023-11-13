@@ -12,15 +12,14 @@ import ListItem from "../../components/ListItem";
 import { LISTS_KEY } from "../../constants/keys";
 function ListsScreen() {
   const { twaColors } = useColorTheme();
-  const savedLists = JSON.parse(String(localStorage.getItem(LISTS_KEY))) || [];
-  const [lists, setLists] =
-    useState<
-      Array<{
-        list: Array<{ content: string; checked: boolean }>;
-        id: string;
-        listName: string;
-      }>
-    >(savedLists);
+
+  const [lists, setLists] = useState<
+    Array<{
+      list: Array<{ content: string; checked: boolean, id: string }>;
+      id: string;
+      listName: string;
+    }>
+  >(JSON.parse(String(localStorage.getItem(LISTS_KEY))) || []);
 
   useEffect(() => {
     localStorage.setItem(LISTS_KEY, JSON.stringify(lists));
@@ -40,13 +39,12 @@ function ListsScreen() {
     setLists((prevList) => prevList?.filter((item) => item.id !== id));
   };
 
-  const defaultItem = {
-    list: [],
-    id: uuidv4(),
-    listName: "Shopping list",
-  };
-
   const handleAddNewList = () => {
+    const defaultItem = {
+      list: [],
+      id: uuidv4(),
+      listName: "Shopping list",
+    };
     setLists((prevList) => [...prevList, defaultItem]);
   };
 
@@ -64,8 +62,6 @@ function ListsScreen() {
             <ListItem
               key={item.id}
               item={item}
-              idx={idx}
-              updatedItem={updatedItem}
               setUpdatedItem={setUpdatedItem}
               changeHandler={handleInputChange}
               deleteHandler={handleDelete}

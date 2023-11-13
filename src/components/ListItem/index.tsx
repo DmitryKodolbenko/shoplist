@@ -18,8 +18,6 @@ interface IList {
 
 interface ListItemProps {
   item: IList;
-  idx: number;
-  updatedItem: string | null;
   setUpdatedItem: React.Dispatch<React.SetStateAction<any>>;
   changeHandler: any;
   deleteHandler: any;
@@ -28,8 +26,6 @@ interface ListItemProps {
 
 const ListItem: React.FC<ListItemProps> = ({
   item: { listName, list, id },
-  idx,
-  updatedItem,
   setUpdatedItem,
   changeHandler,
   isCurrentBeingUpdated,

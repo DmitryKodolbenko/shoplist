@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { routes } from "../../constants/routes";
 import queryString from "query-string";
 import { useColorTheme } from "../../hooks/useColorTheme";
 import { v4 as uuidv4 } from "uuid";
@@ -25,11 +24,6 @@ import { useStore as useStoreNanoStores } from "@nanostores/react";
 interface ISearch {
   id?: string;
 }
-interface IList {
-  listName: string;
-  list: string[];
-  id: string;
-}
 
 function ListScreen() {
   const { twaColors } = useColorTheme();
@@ -38,7 +32,7 @@ function ListScreen() {
 
   const [lists, setLists] = useState<
     Array<{
-      list: Array<{ content: string; checked: boolean }>;
+      list: Array<{ content: string; checked: boolean; id: string }>;
       id: string;
       listName: string;
     }>
@@ -64,7 +58,7 @@ function ListScreen() {
           item.id === currentList?.id
             ? {
                 ...item,
-                list: [...item.list, { content: inputValue, checked: false }],
+                list: [...item.list, { content: inputValue, checked: false, id: uuidv4()}],
               }
             : item
         )
@@ -73,27 +67,27 @@ function ListScreen() {
     }
   };
 
-  const removeItemFromList = (itemToRemove: string) => {
+  const removeItemFromList = (id: string) => {
     setLists((prevList) =>
       prevList?.map((item) =>
         item.id === currentList?.id
           ? {
               ...item,
-              list: item.list.filter((item) => item.content !== itemToRemove),
+              list: item.list.filter((item) => item.id !== id),
             }
           : item
       )
     );
   };
 
-  function updateCheckedValue(newChecked: boolean, content: string) {
+  function updateCheckedValue(newChecked: boolean, id: string) {
     setLists((prevList) =>
       prevList?.map((item) =>
         item.id === currentList?.id
           ? {
               ...item,
               list: item.list.map((listItem) =>
-                listItem.content === content
+                listItem.id === id
                   ? { ...listItem, checked: newChecked }
                   : listItem
               ),
@@ -108,7 +102,7 @@ function ListScreen() {
       <ListScreenContainer>
         {currentList?.list?.map((item, idx) => (
           <ItemCheckbox
-            key={idx}
+            key={item.id}
             item={item}
             checked={item.checked}
             content={item.content}
@@ -143,7 +137,7 @@ function ListScreen() {
 export default ListScreen;
 
 interface ListItemProps {
-  item: { content: string; checked: boolean };
+  item: { content: string; checked: boolean, id: string };
   checked: boolean;
   content: string;
   idx: number;
@@ -155,22 +149,20 @@ interface ListItemProps {
 const ItemCheckbox: React.FC<ListItemProps> = ({
   checked,
   content,
-  idx,
   deleteHandler,
   checkedHandler,
-  currenListtId,
+  item,
 }) => {
   const { twaColors } = useColorTheme();
   const { storeMain } = useStores();
   const storeMainRepository = useStoreNanoStores(storeMain.repository);
 
   const HandleDelete = () => {
-    const deleteContent = content;
-    deleteHandler(deleteContent);
+    deleteHandler(item.id);
   };
 
   const onChange = (e: CheckboxChangeEvent) => {
-    checkedHandler(e.target.checked, content);
+    checkedHandler(e.target.checked, item.id);
   };
 
   return (

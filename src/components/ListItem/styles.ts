@@ -16,7 +16,6 @@ export const StyledListitem = styled.div<IListitem>`
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  flex-wrap: wrap;
 `;
 interface IListTitle {
   textColor: string;

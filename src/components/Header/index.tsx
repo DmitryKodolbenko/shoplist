@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { BackBtn, DeleteChangeBtn, HeaderContainer, HeaderTwa } from "./styles";
 import { useColorTheme } from "../../hooks/useColorTheme";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -14,9 +14,7 @@ function Header() {
   const { storeMain } = useStores();
   const storeMainRepository = useStoreNanoStores(storeMain.repository);
 
-  const isOneListScreen = useMemo(() => {
-    return location.pathname === routes.list;
-  }, [location.pathname]);
+  const isOneListScreen = location.pathname === routes.list;
 
   const isDeleteHandler = () => {
     storeMain.setIsDelete(!storeMain.repository.value?.isDelete);
