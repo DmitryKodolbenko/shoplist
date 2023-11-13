@@ -13,9 +13,14 @@ import { LISTS_KEY } from "../../constants/keys";
 function ListsScreen() {
   const { twaColors } = useColorTheme();
   const savedLists = JSON.parse(String(localStorage.getItem(LISTS_KEY))) || [];
-  const [lists, setLists] = useState<
-  Array<{ list: Array<{ content: string; checked: boolean }>; id: string; listName: string }>
->(savedLists);
+  const [lists, setLists] =
+    useState<
+      Array<{
+        list: Array<{ content: string; checked: boolean }>;
+        id: string;
+        listName: string;
+      }>
+    >(savedLists);
 
   useEffect(() => {
     localStorage.setItem(LISTS_KEY, JSON.stringify(lists));
@@ -51,7 +56,7 @@ function ListsScreen() {
         {lists?.length === 0 ? (
           <EmptryList>
             <EmptryListText textColor={twaColors.emptrytext}>
-            You don't have any lists created yet
+              You don't have any lists created yet
             </EmptryListText>
           </EmptryList>
         ) : (

@@ -1,7 +1,5 @@
 import styled, { css } from "styled-components";
 
-
-
 export const ListScreenContainer = styled.div`
   width: 90%;
   padding: 12px 5% 18px;
@@ -27,27 +25,30 @@ export const EditContainer = styled.div<{ backgroundColor: string }>`
   justify-content: center;
   align-items: center;
 
-background-color: ${props => props.backgroundColor};
-`
-export const NewItemInput = styled.input<{ backgroundColor: string, colorText: string, placeholderColor: string }>`
+  background-color: ${(props) => props.backgroundColor};
+`;
+export const NewItemInput = styled.input<{
+  backgroundColor: string;
+  colorText: string;
+  placeholderColor: string;
+}>`
   font-size: 14px;
   text-decoration: none;
   box-shadow: none;
   border: none;
-  color: ${props => props.colorText};
-  background-color: ${props => props.backgroundColor};
+  color: ${(props) => props.colorText};
+  background-color: ${(props) => props.backgroundColor};
   border-radius: 12px;
   padding: 12px 6px 12px;
   flex: 1;
 
-
   &::placeholder {
-    color: ${props => props.placeholderColor}
+    color: ${(props) => props.placeholderColor};
   }
   &:focus {
     outline: none;
   }
-`
+`;
 export const SubmitBtn = styled.button<{ backgroundColor: string }>`
   height: 40.8px;
   width: 40.8px;
@@ -57,17 +58,15 @@ export const SubmitBtn = styled.button<{ backgroundColor: string }>`
   align-items: center;
   border-radius: 12px;
   border: none;
-  background-color: ${props => props.backgroundColor};
+  background-color: ${(props) => props.backgroundColor};
 
   &:hover {
     opacity: 0.8;
   }
-
-`
-
+`;
 
 interface IListitem {
-  backgroundColor: string
+  backgroundColor: string;
 }
 
 export const StyledListitem = styled.div<IListitem>`
@@ -75,7 +74,7 @@ export const StyledListitem = styled.div<IListitem>`
   border: none;
   border-radius: 12px;
   padding: 16px 5% 16px;
-  background-color: ${props => props.backgroundColor};
+  background-color: ${(props) => props.backgroundColor};
 
   display: flex;
   flex-direction: row;
@@ -84,7 +83,6 @@ export const StyledListitem = styled.div<IListitem>`
   gap: 12px;
   flex-wrap: wrap;
 `;
-
 
 interface IListTitle {
   textColor: string;
@@ -106,14 +104,14 @@ export const ItemContainer = styled.div`
   gap: 8px;
   justify-content: flex-start;
   align-items: center;
-`
+`;
 
 export const DeleteBtn = styled.button`
-    border: none;
-    background-color: transparent;
-    text-decoration: none;
-    
-    &:hover {
-      opacity: 0.4;
-    }
-  `
+  border: none;
+  background-color: transparent;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.4;
+  }
+`;

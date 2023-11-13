@@ -10,8 +10,6 @@ import {
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { routes } from "../../constants/routes";
 
-
-
 interface IList {
   listName: string;
   list: Array<{ content: string; checked: boolean }>;
@@ -52,13 +50,12 @@ const ListItem: React.FC<ListItemProps> = ({
 
   const navigateHandler = () => {
     navigate({
-        pathname: routes.list,
-        search: createSearchParams({
-          id: id,
-        }).toString(),
-      })
-  }
-
+      pathname: routes.list,
+      search: createSearchParams({
+        id: id,
+      }).toString(),
+    });
+  };
 
   return (
     <StyledListitem backgroundColor={twaColors.background}>
@@ -71,7 +68,9 @@ const ListItem: React.FC<ListItemProps> = ({
           placeholder="List name"
         />
       ) : (
-        <ListTitle onClick={navigateHandler} textColor={twaColors.listTitle}>{listName}</ListTitle>
+        <ListTitle onClick={navigateHandler} textColor={twaColors.listTitle}>
+          {listName}
+        </ListTitle>
       )}
       <ButtonsGroup>
         <ListBtn

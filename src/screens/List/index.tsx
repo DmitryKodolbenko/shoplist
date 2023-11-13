@@ -6,8 +6,8 @@ import { useColorTheme } from "../../hooks/useColorTheme";
 import { v4 as uuidv4 } from "uuid";
 import { LISTS_KEY } from "../../constants/keys";
 import { PlusOutlined } from "@ant-design/icons";
-import { Checkbox } from 'antd';
-import type { CheckboxChangeEvent } from 'antd/es/checkbox';
+import { Checkbox } from "antd";
+import type { CheckboxChangeEvent } from "antd/es/checkbox";
 import { DeleteOutlined } from "@ant-design/icons";
 import {
   DeleteBtn,
@@ -37,27 +37,21 @@ function ListScreen() {
   const [inputValue, setInputValue] = useState<string>("");
 
   const [lists, setLists] = useState<
-  Array<{ list: Array<{ content: string; checked: boolean }>; id: string; listName: string }>
->(JSON.parse(String(localStorage.getItem(LISTS_KEY))));
-console.log("render", lists)
+    Array<{
+      list: Array<{ content: string; checked: boolean }>;
+      id: string;
+      listName: string;
+    }>
+  >(JSON.parse(String(localStorage.getItem(LISTS_KEY))));
 
   useEffect(() => {
     localStorage.setItem(LISTS_KEY, JSON.stringify(lists));
   }, [lists]);
 
-
-  const search: ISearch = queryString.parse(location.search);
-
-  // const [currentList, setCurrentList] = useState(lists.find((item) => item.id === search.id))
-  // useEffect(() => {
-  //   setCurrentList(lists.find((item) => item.id === search.id))
-  // }, [lists])
-
   const currentList = useMemo(() => {
     const search: ISearch = queryString.parse(location.search);
     return lists?.find((item) => item.id === search.id);
-  }, [lists, setLists, location.search ]);
-
+  }, [lists, setLists, location.search]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -66,36 +60,46 @@ console.log("render", lists)
   const handleSubmit = () => {
     if (inputValue.trim() !== "") {
       setLists((prevList) =>
-      prevList?.map((item) =>
-      item.id === currentList?.id
-        ? { ...item, list: [...item.list, { content: inputValue, checked: false }] }
-        : item
-    )
+        prevList?.map((item) =>
+          item.id === currentList?.id
+            ? {
+                ...item,
+                list: [...item.list, { content: inputValue, checked: false }],
+              }
+            : item
+        )
       );
       setInputValue("");
     }
   };
 
-  const removeItemFromList = (
-    itemToRemove: string
-  ) => {
+  const removeItemFromList = (itemToRemove: string) => {
     setLists((prevList) =>
       prevList?.map((item) =>
-      item.id === currentList?.id
-        ? { ...item, list: item.list.filter((item) => item.content !== itemToRemove) }
-        : item
-    )
+        item.id === currentList?.id
+          ? {
+              ...item,
+              list: item.list.filter((item) => item.content !== itemToRemove),
+            }
+          : item
+      )
     );
   };
 
-
   function updateCheckedValue(newChecked: boolean, content: string) {
-    setLists((prevList) => prevList?.map((item) =>
-      item.id === currentList?.id
-        ? { ...item, list: item.list.map((listItem) =>
-          listItem.content === content ? { ...listItem, checked: newChecked } : listItem
-        )}
-        : item) 
+    setLists((prevList) =>
+      prevList?.map((item) =>
+        item.id === currentList?.id
+          ? {
+              ...item,
+              list: item.list.map((listItem) =>
+                listItem.content === content
+                  ? { ...listItem, checked: newChecked }
+                  : listItem
+              ),
+            }
+          : item
+      )
     );
   }
 
@@ -145,7 +149,7 @@ interface ListItemProps {
   idx: number;
   deleteHandler: any;
   checkedHandler: any;
-  currenListtId: string
+  currenListtId: string;
 }
 
 const ItemCheckbox: React.FC<ListItemProps> = ({
@@ -166,20 +170,24 @@ const ItemCheckbox: React.FC<ListItemProps> = ({
   };
 
   const onChange = (e: CheckboxChangeEvent) => {
-    checkedHandler(e.target.checked, content)
+    checkedHandler(e.target.checked, content);
   };
 
   return (
     <StyledListitem backgroundColor={twaColors.background}>
       <ItemContainer>
-        <Checkbox checked={checked} onChange={onChange}/>
-        <ListTitle textColor={checked ? twaColors.hintListTitle : twaColors.listTitle}>{content}</ListTitle>
+        <Checkbox checked={checked} onChange={onChange} />
+        <ListTitle
+          textColor={checked ? twaColors.hintListTitle : twaColors.listTitle}
+        >
+          {content}
+        </ListTitle>
       </ItemContainer>
-      {storeMainRepository.isDelete && <DeleteBtn onClick={HandleDelete}>
-        <DeleteOutlined style={{ color: twaColors.listTitle }} />
-      </DeleteBtn> }
-      
-
+      {storeMainRepository.isDelete && (
+        <DeleteBtn onClick={HandleDelete}>
+          <DeleteOutlined style={{ color: twaColors.listTitle }} />
+        </DeleteBtn>
+      )}
     </StyledListitem>
   );
 };

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { HomeScreenContainer, HomeScreenContent } from "./styles";
-import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { routes } from "../../constants/routes";
 import Header from "../../components/Header";
 import ListsScreen from "../ListsScreen";

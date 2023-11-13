@@ -1,6 +1,6 @@
 import React from "react";
 import AppScreen from "./screens/AppScreen";
-import { Navigate, Outlet, Route, Routes,  } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import Gstyles from "./stylesheets/gstyles";
 import { routes } from "./constants/routes";
 import HomeScreen from "./screens/HomeScreen";
@@ -21,15 +21,6 @@ function App() {
   return (
     <StoreProvider store={rootStore}>
       <AppScreen>
-        {/* <Routes>
-          <Route
-            index
-            element={<Navigate to={`${routes.home + routes.lists}/`} replace />}
-          />
-          <Route path="/" element={<Outlet />} />
-          <Route path={`${routes.lists}/*`} element={<HomeScreen />} />
-          
-        </Routes> */}
         <HomeScreen />
         <Gstyles />
       </AppScreen>

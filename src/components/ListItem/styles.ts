@@ -20,7 +20,7 @@ export const StyledListitem = styled.div<IListitem>`
 `;
 interface IListTitle {
   textColor: string;
-  placeholderColor?:string;
+  placeholderColor?: string;
 }
 
 export const ListTitle = styled.h2<IListTitle>`
