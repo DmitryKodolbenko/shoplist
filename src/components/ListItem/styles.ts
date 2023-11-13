@@ -39,6 +39,7 @@ export const ListTitle = styled.h2<IListTitle>`
 
 export const ListTitleInput = styled.input<IListTitle>`
   font-size: 14px;
+  width: 65%;
   color: ${(props) => props.textColor};
   border: none;
   background-color: transparent;
@@ -66,6 +67,7 @@ export const ListBtn = styled.button`
   border: none;
   background-color: transparent;
   text-decoration: none;
+  cursor: pointer;
 
   &:hover {
     opacity: 0.8;

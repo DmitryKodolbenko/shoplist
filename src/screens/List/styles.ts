@@ -109,6 +109,7 @@ export const DeleteBtn = styled.button`
   background-color: transparent;
   text-decoration: none;
 
+  cursor: pointer;
   &:hover {
     opacity: 0.4;
   }

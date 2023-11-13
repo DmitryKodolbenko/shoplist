@@ -36,7 +36,6 @@ const ListItem: React.FC<ListItemProps> = ({
 
   const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
-
     changeHandler(id, value);
   };
 
@@ -54,7 +53,10 @@ const ListItem: React.FC<ListItemProps> = ({
   };
 
   return (
-    <StyledListitem border={isCurrentBeingUpdated ? twaColors.borderListItem : "none"} backgroundColor={twaColors.background}>
+    <StyledListitem
+      border={isCurrentBeingUpdated ? twaColors.borderListItem : "none"}
+      backgroundColor={twaColors.background}
+    >
       {isCurrentBeingUpdated ? (
         <ListTitleInput
           textColor={twaColors.listTitle}
@@ -63,6 +65,10 @@ const ListItem: React.FC<ListItemProps> = ({
           placeholderColor={twaColors.placeholder}
           placeholder="List name"
         />
+      ) : listName === "" ? (
+        <ListTitle onClick={navigateHandler} textColor={twaColors.listTitle}>
+          List name
+        </ListTitle>
       ) : (
         <ListTitle onClick={navigateHandler} textColor={twaColors.listTitle}>
           {listName}
@@ -72,7 +78,13 @@ const ListItem: React.FC<ListItemProps> = ({
         <ListBtn
           onClick={() => setUpdatedItem(isCurrentBeingUpdated ? null : id)}
         >
-          <EditOutlined style={{ color: isCurrentBeingUpdated ? twaColors.hintListTitle : twaColors.listTitle }} />
+          <EditOutlined
+            style={{
+              color: isCurrentBeingUpdated
+                ? twaColors.hintListTitle
+                : twaColors.listTitle,
+            }}
+          />
         </ListBtn>
         <ListBtn onClick={handleDelete}>
           <DeleteOutlined style={{ color: twaColors.listTitle }} />

@@ -30,9 +30,10 @@ function ListsScreen() {
   const handleInputChange = (id: string, newListName: string) => {
     setLists((prevList) =>
       prevList?.map((list) =>
-        list.id === id ? { ...list, listName: newListName } : list
+        list.id === id ? { ...list, listName: newListName} : list
       )
     );
+
   };
 
   const handleDelete = (id: string) => {
