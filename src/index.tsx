@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <HashRouter>
+    <HashRouter basename="/shoplist">
       <App />
     </HashRouter>
   </React.StrictMode>
