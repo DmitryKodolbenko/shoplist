@@ -16,6 +16,7 @@
     "@types/react-dom": "^18.2.15",
     "@types/webfontloader": "^1.6.37",
     "antd": "^5.11.1",
+    "gh-pages": "^6.0.0",
     "nanostores": "^0.9.5",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
