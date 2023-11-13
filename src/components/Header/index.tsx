@@ -15,7 +15,7 @@ function Header() {
   const storeMainRepository = useStoreNanoStores(storeMain.repository);
 
   const isOneListScreen = useMemo(() => {
-    return location.pathname === routes.home + routes.list;
+    return location.pathname === routes.list;
   }, [location.pathname]);
 
   const isDeleteHandler = () => {
@@ -24,7 +24,7 @@ function Header() {
 
   const navigateHandler = () => {
     navigate({
-      pathname: routes.home + routes.lists,
+      pathname: routes.lists,
     });
   };
 

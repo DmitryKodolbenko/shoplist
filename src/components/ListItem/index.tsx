@@ -52,7 +52,7 @@ const ListItem: React.FC<ListItemProps> = ({
 
   const navigateHandler = () => {
     navigate({
-        pathname: routes.home + routes.list,
+        pathname: routes.list,
         search: createSearchParams({
           id: id,
         }).toString(),
