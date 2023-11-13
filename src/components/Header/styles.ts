@@ -6,7 +6,8 @@ interface IHeaderContainer {
 
 export const HeaderContainer = styled.header<IHeaderContainer>`
     width: 87%;
-    padding: 12px 6.5% 18px;
+    height: 10%;
+    padding: 0px 6.5% 0px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -14,6 +15,7 @@ export const HeaderContainer = styled.header<IHeaderContainer>`
     flex-wrap: wrap;
     gap: 12px;
     background-color: ${props => props.backgroundColor};
+
 `
 
 interface IHeaderTwa {

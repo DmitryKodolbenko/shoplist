@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface IListitem {
   backgroundColor: string;
+  border: string;
 }
 
 export const StyledListitem = styled.div<IListitem>`
@@ -16,6 +17,8 @@ export const StyledListitem = styled.div<IListitem>`
   justify-content: space-between;
   align-items: center;
   gap: 12px;
+
+  border: ${(props) => props.border};
 `;
 interface IListTitle {
   textColor: string;
@@ -26,6 +29,8 @@ export const ListTitle = styled.h2<IListTitle>`
   font-size: 14px;
   color: ${(props) => props.textColor};
   cursor: pointer;
+  max-width: 65%;
+  word-wrap: break-word;
 
   &:hover {
     opacity: 0.8;
@@ -38,6 +43,7 @@ export const ListTitleInput = styled.input<IListTitle>`
   border: none;
   background-color: transparent;
   text-decoration: none;
+  padding: 0;
 
   &::placeholder {
     color: ${(props) => props.placeholderColor};
@@ -50,7 +56,10 @@ export const ListTitleInput = styled.input<IListTitle>`
 export const ButtonsGroup = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
   gap: 8px;
+  max-width: 35%;
+  flex-wrap: wrap;
 `;
 
 export const ListBtn = styled.button`

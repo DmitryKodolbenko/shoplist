@@ -12,8 +12,11 @@ export const useColorTheme = () => {
     placeholder: "var(--tg-theme-hint-color)",
     hintListTitle: "var(--tg-theme-hint-color)",
 
+
+    borderListItem: "1px solid var(--tg-theme-text-color)",
     //button
     buttonColor: "var(--tg-theme-button-color)",
+
   };
 
   return {

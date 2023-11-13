@@ -2,13 +2,11 @@ import styled, { css } from "styled-components";
 
 export const ListsScreenContainer = styled.div`
   width: 90%;
-  padding: 12px 5% 18px;
-
+  padding: 12px 5% 12px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 8px;
-
   height: 85%;
   overflow-x: hidden;
   overflow-y: scroll;

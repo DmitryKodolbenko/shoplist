@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const ListScreenContainer = styled.div`
   width: 90%;
-  padding: 12px 5% 18px;
+  padding: 12px 5% 12px;
 
   display: flex;
   flex-direction: column;
@@ -91,8 +91,6 @@ interface IListTitle {
 export const ListTitle = styled.h2<IListTitle>`
   font-size: 14px;
   color: ${(props) => props.textColor};
-  cursor: pointer;
-
   max-width: 80%;
   word-wrap: break-word;
 `;

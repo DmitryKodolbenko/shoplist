@@ -54,7 +54,7 @@ const ListItem: React.FC<ListItemProps> = ({
   };
 
   return (
-    <StyledListitem backgroundColor={twaColors.background}>
+    <StyledListitem border={isCurrentBeingUpdated ? twaColors.borderListItem : "none"} backgroundColor={twaColors.background}>
       {isCurrentBeingUpdated ? (
         <ListTitleInput
           textColor={twaColors.listTitle}
@@ -72,7 +72,7 @@ const ListItem: React.FC<ListItemProps> = ({
         <ListBtn
           onClick={() => setUpdatedItem(isCurrentBeingUpdated ? null : id)}
         >
-          <EditOutlined style={{ color: twaColors.listTitle }} />
+          <EditOutlined style={{ color: isCurrentBeingUpdated ? twaColors.hintListTitle : twaColors.listTitle }} />
         </ListBtn>
         <ListBtn onClick={handleDelete}>
           <DeleteOutlined style={{ color: twaColors.listTitle }} />
